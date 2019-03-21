@@ -7,7 +7,7 @@
 
 - name: centos - Add runit to yum
   shell: "curl -s https://packagecloud.io/install/repositories/imeyer/runit/script.rpm.sh | sudo bash"
-  when: runit_installed|failed
+  when: runit_installed is failed
 
 - name: centos - install package runit
   yum:
