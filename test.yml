@@ -43,7 +43,7 @@
       user: myservice
       group: myservice
       command: '/opt/runme'
-      commands_setup:
+      command_setup:
         - echo line1
         - echo line2
 

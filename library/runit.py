@@ -16,7 +16,7 @@ notes:
     - This module creates a simple run file and run log file for your service.
     - Note: the role runit must be executed before this task
     -
-    - Due to the nature of runit, enabed='yes' will cause runit to start.
+    - Due to the nature of runit, enabled='yes' will cause runit to start.
     - In the auto='yes' mode you must provide a command for the run file to execute when you
     - want your service to start and provide the user the running service will run under.
     - However, if you want more control, you can set auto='no' and use the returned vars
@@ -258,8 +258,8 @@ def main():
             command_setup = dict(required=False, default=list(), type='list'),
             user = dict(required=False, default='root'),
             group = dict(required=False, default='')
-    #        signal = dict(required=False, choices=['HUP','CONT','TERM', 'KILL', 'USR1', 'USR2', 'STOP', 'ALRM', 'QUIT'], default=None),
-    #        validate = dict(required=False, default=None),
+    #       signal = dict(required=False, choices=['HUP','CONT','TERM', 'KILL', 'USR1', 'USR2', 'STOP', 'ALRM', 'QUIT'], default=None),
+    #       validate = dict(required=False, default=None),
         ),
         #add_file_common_args=True,
         supports_check_mode=True
