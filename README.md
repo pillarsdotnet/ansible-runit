@@ -34,10 +34,10 @@ Task Variables
     required: true
     choices: [ "up", "down", "once" ]
     description:
-		Change the state of the service only if enabled='yes'
-		* up - Keep the service up, if it crashes or stops attempt to restart it.
-		* down - Bring the service down.
-		* once - Can only be run from the down state. Will start the service, however, will not restart if the service crashes.
+        Change the state of the service only if enabled='yes'
+        * up - Keep the service up, if it crashes or stops attempt to restart it.
+        * down - Bring the service down.
+        * once - Can only be run from the down state. Will start the service, however, will not restart if the service crashes.
   enabled:
     required: false
     default: ""
@@ -45,7 +45,7 @@ Task Variables
     description:
         - if enabled the service will be running and also will start on system boot
         if disabled the service will not be running and will not start on system boot
-		if not defined, there will be no change in the enabled state
+        if not defined, there will be no change in the enabled state
   timeout:
     default: 7
     required: false
@@ -56,8 +56,8 @@ Task Variables
     default: "yes"
     choices: [ "yes", "no" ]
     description:
-		- 'yes' Automatically creates the run_service_file and the log_service_file to execute the service.
-		requires the 'user' and 'command' values to be set
+        - 'yes' Automatically creates the run_service_file and the log_service_file to execute the service.
+        requires the 'user' and 'command' values to be set
         - 'no' The caller is required to create the run file and the run log file.
         See the notes for a more detailed explanation.
   command:
@@ -162,12 +162,12 @@ Example Playbook
 See test.yml for a working version.
 
     - hosts: servers
-	  sudo: true
+      sudo: true
 
       roles:
          - { role: gotansible.runit }
 
-	  tasks:
+      tasks:
       - name: place file to run
         copy: src=testrun.sh dest=/opt/runme mode=0755
 
@@ -176,12 +176,12 @@ See test.yml for a working version.
 
       - name: test runit
         runit: name=myservice enabled=true state=up timeout=9 user='root' command='bash /opt/runme'
-		register: myservice_status
-	  
+        register: myservice_status
+
 ### handler.yml
-	  - name: restart myservice
-		runit: name=myservice enabled=true state=up timeout=9 action=restart
-		when: not myservice_status.restarted
+      - name: restart myservice
+        runit: name=myservice enabled=true state=up timeout=9 action=restart
+        when: not myservice_status.restarted
 
 License
 -------

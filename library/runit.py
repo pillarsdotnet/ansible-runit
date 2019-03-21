@@ -41,10 +41,10 @@ options:
     required: true
     choices: [ "up", "down", "once", "start", "stop" ]
     description:
-	    Change the state of the service only if enabled='yes'
-	    * up - Keep the service up, if it crashes or stops attempt to restart it.
-	    * down - Bring the service down.
-	    * once - Can only be run from the down state. Will start the service, however, will not restart if the service crashes.
+        Change the state of the service only if enabled='yes'
+        * up - Keep the service up, if it crashes or stops attempt to restart it.
+        * down - Bring the service down.
+        * once - Can only be run from the down state. Will start the service, however, will not restart if the service crashes.
         * start - wait timeout before determining if the service is running
         * stop - wait timeout before determining if the service has shutdown
   enabled:
@@ -65,8 +65,8 @@ options:
     default: "yes"
     choices: [ "yes", "no" ]
     description:
-	    - 'yes' Automatically creates the run_service_file and the log_service_file to execute the service.
-	    requires the 'user' and 'command' values to be set
+        - 'yes' Automatically creates the run_service_file and the log_service_file to execute the service.
+        requires the 'user' and 'command' values to be set
         - 'no' The caller is required to create the run file and the run log file.
         See the notes for a more detailed explanation.
   command:
