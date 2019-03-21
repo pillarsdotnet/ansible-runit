@@ -6,7 +6,7 @@ import tempfile
 
 DOCUMENTATION = '''
 ---
-module: runit
+module: runit_service
 version_added: "1.9.1"
 short_description: Sets up a runit service
 description:
@@ -107,10 +107,19 @@ options:
 
 EXAMPLES = '''
 
-# runit if enabled is in the running state
-- runit: name=myservicename enabled=yes state=running timeout=9
+# runit_service if enabled is in the running state
+- runit_service:
+    name: myservicename
+    enabled: yes
+    state: running
+    timeout=9
 
-- runit: name=myservicename enabled=yes state=running timeout=9 signal=HUP
+- runit:
+    name: myservicename
+    enabled: yes
+    state: running
+    timeout: 9
+    signal: HUP
 '''
 
 def get_status(module, name):
@@ -258,8 +267,8 @@ def main():
             command_setup = dict(required=False, default=list(), type='list'),
             user = dict(required=False, default='root'),
             group = dict(required=False, default='')
-    #       signal = dict(required=False, choices=['HUP','CONT','TERM', 'KILL', 'USR1', 'USR2', 'STOP', 'ALRM', 'QUIT'], default=None),
-    #       validate = dict(required=False, default=None),
+            # signal = dict(required=False, choices=['HUP','CONT','TERM', 'KILL', 'USR1', 'USR2', 'STOP', 'ALRM', 'QUIT'], default=None),
+            # validate = dict(required=False, default=None),
         ),
         #add_file_common_args=True,
         supports_check_mode=True
